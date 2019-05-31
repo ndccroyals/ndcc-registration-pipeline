@@ -21,7 +21,7 @@ node {
    }
    stage('gradle build') {
         if (isUnix()){
-		sh "'${gradleHome}/bin/gradle clean build'"
+		sh "'${gradleHome}/bin/gradle clean'"
 		} else {
 		   bat(/"${gradleHome}\bin\gradle" clean build/)
 		   }
