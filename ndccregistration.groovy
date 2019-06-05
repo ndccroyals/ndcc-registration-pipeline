@@ -26,7 +26,7 @@ node {
         if (isUnix()){
 		//sh "'${gradleHome}/bin/gradle clean'"
 		sh "./gradlew clean build"
-		sh " sudo'${dockerHome}/bin/docker' build -t ndcc ."
+		sh sudo "'${dockerHome}/bin/docker' build -t ndcc ."
 		} else {
 		   bat(/"${gradleHome}\bin\gradle" clean build/)
 		   }
