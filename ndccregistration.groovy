@@ -1,6 +1,7 @@
 node {
    def mvnHome
    def gradleHome
+   def dockerHome
 	
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
@@ -9,12 +10,14 @@ node {
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
       mvnHome = tool 'M3'
-      gradleHome = tool 'gradle'	   
+      gradleHome = tool 'gradle'
+      dockerHome = tool 'DOCKER_HOME'	   
    }
    stage('Build') {
       // Run the maven build
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+	      sh "'${dockerHome}/bin/docker' version"
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
