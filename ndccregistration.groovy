@@ -17,7 +17,7 @@ node {
       // Run the maven build
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-	      sh "'${dockerHome}/bin/docker' version"
+	      
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
@@ -26,6 +26,7 @@ node {
         if (isUnix()){
 		//sh "'${gradleHome}/bin/gradle clean'"
 		sh "./gradlew clean build"
+		sh "'${dockerHome}/bin/docker' docker build -t ndcc ."
 		} else {
 		   bat(/"${gradleHome}\bin\gradle" clean build/)
 		   }
