@@ -11,7 +11,7 @@ node {
       // **       in the global configuration.           
       mvnHome = tool 'M3'
       gradleHome = tool 'gradle'
-      dockerHome = tool 'DOCKER_HOME'	   
+    //  dockerHome = tool 'DOCKER_HOME'	   
    }
    stage('Build') {
       // Run the maven build
@@ -26,7 +26,7 @@ node {
         if (isUnix()){
 		//sh "'${gradleHome}/bin/gradle clean'"
 		sh "./gradlew clean build"
-		sh "sudo /usr/local/bin/docker build -t ndcc ."
+		//sh "sudo /usr/local/bin/docker build -t ndcc ."
 		} else {
 		   bat(/"${gradleHome}\bin\gradle" clean build/)
 		   }
